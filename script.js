@@ -12,12 +12,12 @@ const questions = [
     },
 
     {
-        question: "Which is the smallest country in the world?",
+        question: "Which of the following function of Array object creates a new array with the results of calling a provided function on every element in this array?",
         answers: [
-            { text: "Vatican City", correct: true },
-            { text: "Nepal", correct: false },
-            { text: "Shri Lanka", correct: false },
-            { text: "Bhutan", correct: false },
+            { text: "map()", correct: true },
+            { text: "join()", correct: false },
+            { text: "pop()", correct: false },
+            { text: "push()", correct: false },
         ]
     },
 
@@ -32,12 +32,12 @@ const questions = [
     },
 
     {
-        question: "What is the capital of Canada?",
+        question: "Which of the following function of String object returns the characters in a string beginning at the specified location through the specified number of characters?",
         answers: [
-            { text: "Ottawa", correct: true },
-            { text: "Denver", correct: false },
-            { text: "Ibiza", correct: false },
-            { text: "Berlin", correct: false },
+            { text: "split()", correct: false },
+            { text: "search()", correct: false },
+            { text: "sustr()", correct: true },
+            { text: "slice()", correct: false },
         ]
     },
 
@@ -52,6 +52,16 @@ const questions = [
     },
 
     {
+        question: "Which built-in method returns the index within the calling String object of the first occurrence of the specified value?",
+        answers: [
+            { text: "getIndex()", correct: false },
+            { text: "indexOf()", correct: true },
+            { text: "location()", correct: false },
+            { text: "None of the above", correct: false },
+        ]
+    },
+
+    {
         question: "Which artist painted the ceiling of the Sistine Chapel in Rome",
         answers: [
             { text: "Michelangelo", correct: true },
@@ -62,12 +72,32 @@ const questions = [
     },
 
     {
+        question: "Which of the following code creates an object?",
+        answers: [
+            { text: "var book = Object()", correct: false },
+            { text: "var book = new Book()", correct: false },
+            { text: "var book = new OBJECT()", correct: false },
+            { text: "var book = new Object()", correct: true },
+        ]
+    },
+
+    {
         question: "Name the best selling book of the 21st century?",
         answers: [
             { text: "Gone Girl, Gillian Flynn", correct: false },
             { text: "Wolf Hall, Hilary Mantel", correct: false },
             { text: "Harry Potter, J. K. Rowling", correct: true },
             { text: "House of Dragon, George, R. R. Martin", correct: false },
+        ]
+    },
+
+    {
+        question: "How can you get the type of arguments passed to a function?",
+        answers: [
+            { text: "Using typeof operator", correct: true },
+            { text: "using getType function", correct: false },
+            { text: "None of the above", correct: false },
+            { text: "Both of the above", correct: false },
         ]
     }
 ];
@@ -123,7 +153,7 @@ function selectAnswer(e) {
         selectedButton.classList.add("incorrect");
     }
     Array.from(answerButton.children).forEach(button => {
-        if(button.dataset.correct === "true") {
+        if (button.dataset.correct === "true") {
             button.classList.add("correct");
             button.classList.add("correct");
         }
@@ -138,12 +168,12 @@ function showScore() {
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
     header.innerHTML = "Your Score";
-    
+
 }
 
 function handleNextButton() {
     currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
         showScore();
@@ -151,7 +181,7 @@ function handleNextButton() {
 }
 
 nextButton.addEventListener("click", () => {
-    if(currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < questions.length) {
         handleNextButton();
     } else {
         startQuiz();
